@@ -27,11 +27,11 @@ BASE_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.lunch_organizer'
+    'apps.lunch_organizer',
 ]
 
 EXTERNAL_LIBRARIES = [
-
+    'rest_framework'
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + EXTERNAL_LIBRARIES
@@ -88,7 +88,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'es-eu'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
