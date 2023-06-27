@@ -1,10 +1,11 @@
 import logging
 from django.db import models
+from .abstract import TimeStampedUUIDModel
 from django.utils.translation import gettext_lazy as _
 from .classroom import Classroom
 
 
-class Student(models.Model):
+class Student(TimeStampedUUIDModel):
     name = models.CharField(
         max_length=50,
         blank=True,
@@ -32,6 +33,9 @@ class Student(models.Model):
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
 
     class Meta:
+        verbose_name = _('Student')
+        verbose_name_plural = _('Students')
+
         unique_together = ('name', 'surname')
 
     def __str__(self):

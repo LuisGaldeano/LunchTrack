@@ -8,6 +8,11 @@ class StudentsSerializer(serializers.ModelSerializer):
         model = Student
         fields = '__all__'
 
+
+class StudentListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+
     def to_representation(self, instance):
         representation = super().to_representation(instance=instance)
         classroom_id = representation['classroom']
@@ -15,9 +20,3 @@ class StudentsSerializer(serializers.ModelSerializer):
         representation['classroom'] = str(classroom)
         return representation
 
-    # {
-    #     "name": "Jaime Paco",
-    #     "surname": "Martin",
-    #     "allergies": "",
-    #     "classroom": 1
-    # }

@@ -1,9 +1,10 @@
 import logging
 from django.db import models
+from .abstract import TimeStampedUUIDModel
 from django.utils.translation import gettext_lazy as _
 
 
-class Classroom(models.Model):
+class Classroom(TimeStampedUUIDModel):
     classroom_year = models.IntegerField(
         blank=True,
         null=True,
@@ -34,6 +35,9 @@ class Classroom(models.Model):
         help_text=_("Stage of the classroom"))
 
     class Meta:
+        verbose_name = _('Classroom')
+        verbose_name_plural = _('Classrooms')
+
         unique_together = ('classroom_year', 'classroom_line', 'stage')
 
     def __str__(self):
