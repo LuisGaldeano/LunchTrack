@@ -13,7 +13,17 @@ SECRET_KEY = SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    'localhost', '0.0.0.0', '127.0.0.1',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost",
+    "http://0.0.0.0",
+    "http://localhost:3000",
+    "http://0.0.0.0:3000",
+    "http://127.0.0.1:3000",
+]
 
 # Application definition
 
@@ -28,11 +38,13 @@ BASE_APPS = [
 
 LOCAL_APPS = [
     'apps.lunch_organizer',
-    'apps.users'
+    'apps.users',
+    'apps.workcalendar',
 ]
 
 EXTERNAL_LIBRARIES = [
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + EXTERNAL_LIBRARIES
@@ -40,6 +52,7 @@ INSTALLED_APPS = BASE_APPS + LOCAL_APPS + EXTERNAL_LIBRARIES
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

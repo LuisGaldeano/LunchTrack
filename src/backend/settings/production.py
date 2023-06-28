@@ -4,7 +4,17 @@ from .settings import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost', '0.0.0.0', '127.0.0.1',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost",
+    "http://0.0.0.0",
+    "http://localhost:8080",
+    "http://0.0.0.0:8080",
+    "http://127.0.0.1:8080",
+]
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

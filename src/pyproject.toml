@@ -11,6 +11,10 @@ django = "^4.2.2"
 djangorestframework = "^3.14.0"
 psycopg2-binary = "^2.9.6"
 django-model-utils = "^4.3.1"
+django-cors-headers = "^4.1.0"
+pandas = "^2.0.2"
+ipywidgets = "^8.0.6"
+workalendar = "^17.0.0"
 
 
 [build-system]
