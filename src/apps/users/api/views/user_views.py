@@ -1,17 +1,25 @@
 from rest_framework.response import Response
 from rest_framework import status
 from ...models.user import User
-from ..serializers.user_serializers import UserSerializer
+from ..serializers.user_serializers import UserSerializer, LoggingUserSerializer
 from rest_framework.decorators import api_view
 from django.utils.translation import gettext_lazy as _
 
 
 @api_view(['GET', 'POST'])
-def user_api_view(request):
+def user_api_view(request, username=None):
     if request.method == 'GET':
-        users = User.objects.all()
-        users_serializer = UserSerializer(users, many=True)
-        return Response(users_serializer.data, status=status.HTTP_200_OK)
+        if username:
+            try:
+                user = User.objects.get(username=username)
+                user_serializer = LoggingUserSerializer(user)
+                return Response(user_serializer.data, status=status.HTTP_200_OK)
+            except:
+                return Response(_({'message': 'User not found'}), status=status.HTTP_400_BAD_REQUEST)
+        else:
+            users = User.objects.all()
+            users_serializer = UserSerializer(users, many=True)
+            return Response(users_serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
         user_serializer = UserSerializer(data=request.data)

@@ -5,6 +5,6 @@ from ...models.workcalendar import Workcalendar
 class WorkcalendarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workcalendar
-        fields = ['date', 'holiday']
+        fields = ['id', 'date', 'holiday']
 
 

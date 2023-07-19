@@ -30,6 +30,13 @@ class Student(TimeStampedUUIDModel):
         verbose_name=_("Allergies"),
         help_text=_("Allergies of the student"))
 
+    scholar_year = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        verbose_name=_('scholar_year'),
+        help_text=_('Year of the current course'))
+
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
 
     class Meta:
